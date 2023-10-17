@@ -1,16 +1,10 @@
 const express = require('express')
 const app = express()
-const port = 3000 || process.env.PORT
+const os = require('os')
+const port = 3010 || process.env.PORT
 const multer = require('multer')
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, 'uploads');
-  },
-  filename: (req, file, cb) => {
-    cb(null, Date.now() + '-' + file.originalname);
-  }
-});
-const upload = multer({ storage: storage });
+
+const upload = multer({dest : os.tmpdir()});
 app.set('view engine','ejs')
 app.use(express.static(__dirname + "/static_files"))
 app.use('/uploads',express.static("/uploads"))
