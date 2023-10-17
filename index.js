@@ -4,7 +4,7 @@ const os = require('os')
 const port = 3010 || process.env.PORT
 const multer = require('multer')
 
-const upload = multer({dest : os.tmpdir()});
+const upload = multer({dest : "uploads"});
 app.set('view engine','ejs')
 app.use(express.static(__dirname + "/static_files"))
 app.use('/uploads',express.static("/uploads"))
